@@ -1,4 +1,4 @@
-name: GeoVerse Ultimate Build
+name: GeoVerse Classic Build
 
 on:
   push:
@@ -14,7 +14,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '24'
+          node-version: '22'
           
       - name: Install dependencies
         run: npm install
@@ -24,7 +24,7 @@ jobs:
         
       - name: Init Capacitor
         run: |
-          npx cap init GeoVerse com.geoverse.master --web-dir dist
+          npx cap init GeoVerse com.geoverse.classic --web-dir dist
           npx cap add android
           npx cap sync android
           
@@ -46,5 +46,5 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: GeoVerse-Android-App
+          name: GeoVerse-Classic-App
           path: android/app/build/outputs/apk/debug/app-debug.apk
